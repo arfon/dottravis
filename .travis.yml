@@ -12,4 +12,4 @@ before_script:
   - bundle install --no-deployment
 script: rake
 after_script:
-  - "travis-artifacts upload --path logs --path assets/unicorn.jpg:unicorn.jpg"
+  - "travis-artifacts upload --path assets/unicorn.jpg:unicorn.jpg"
