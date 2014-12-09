@@ -9,7 +9,7 @@ language: ruby
 rvm:
   - "2.1.2"
 before_script:
-  - bundle install
+  - bundle install --no-deployment
 script: rake
 after_script:
   - "travis-artifacts upload --path logs --path assets/unicorn.jpg:unicorn.jpg"
