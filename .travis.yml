@@ -4,7 +4,7 @@ env:
    - "ARTIFACTS_S3_BUCKET=dottravis"
    - secure: "JXE+FZ30zzvZdROmYqzeuC+/5fTZZCU/5yOndxuuyunFmTEAHd9xvBPXiNSmQwR459o2+5cV0xwZjNEBRR2JvoOZ656WOQfWypM7OPGXt0q6xZfqjwnHRZ8MByy+ZnsGootVuvONpjBSaMAPcypDK1VLNzetssWwKDb9CQIqP8E="
    - secure: "WTGS+w2qkusP7K8HIyTI/2UJ29mhs5HsMGnJP4M55ImBDvNr4fzrwv4aecuAbbPAm+dHr/yyuQWKW6BOQhgf+y6waxwUwKNJ3DlGrdnTADqa7yjP1Fs95hGcCoSGaxqQlmiWtbHCfvYdXvXoe1sBdtC2Bjb0ZNHrv2xHsFxB60o="
-   - secure: "JEvbK1N3w8VGrmkkEUKanHK03E6yRtVB74pcgdi/KCeynDySwDoZZdu2xpY+xodpHUN9LEDUPCk5IoMIFfy4JtY3+Bgx1wMScQSHv5phAfH3g8Den0wr8Uvi3FHnHvT+pWxGqo2jlJJZHQExRpSekBsHaX/dKDXyGqwnGeCc6uU="
+   - secure: "UgRb3f9caSovyLn0M1nO7vbd1xyW8+RddnkwadPrKDdGoUiLkK2VfWt29Up58tN/zM1Z2UFeK4JSGyQgHGvNnRFIaaZG+7YRvAo63JSia7NHF3vBQ8oZWg3S4nfCvh5thNYghHjdP4X3uKSw6gf4Q7VOirpffTKvUZrL8olny3I="
 
 language: python
 python:
@@ -20,5 +20,6 @@ before_script:
 script:
   - python baseline.py
 after_script:
-  - "travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png"
-  - curl -u "science-champ:$GITHUB_AUTH" -H "Content-Type: application/json" -d '{"body":"test"}' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments
+  # Only upload to Travis and make a comment if there is a pull request associated with this build
+  - [ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || 0
+  - [ "${TRAVIS_PULL_REQUEST}" != "false" ] && curl -u "$GITHUB_AUTH" -H "Content-Type: application/json" -d '{"body":"test"}' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments || 0
