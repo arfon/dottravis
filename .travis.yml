@@ -5,11 +5,15 @@ env:
    - secure: "JXE+FZ30zzvZdROmYqzeuC+/5fTZZCU/5yOndxuuyunFmTEAHd9xvBPXiNSmQwR459o2+5cV0xwZjNEBRR2JvoOZ656WOQfWypM7OPGXt0q6xZfqjwnHRZ8MByy+ZnsGootVuvONpjBSaMAPcypDK1VLNzetssWwKDb9CQIqP8E="
    - secure: "WTGS+w2qkusP7K8HIyTI/2UJ29mhs5HsMGnJP4M55ImBDvNr4fzrwv4aecuAbbPAm+dHr/yyuQWKW6BOQhgf+y6waxwUwKNJ3DlGrdnTADqa7yjP1Fs95hGcCoSGaxqQlmiWtbHCfvYdXvXoe1sBdtC2Bjb0ZNHrv2xHsFxB60o="
 
-language: ruby
-rvm:
-  - "2.1.2"
+language: python
+python:
+  - "2.7"
 before_script:
-  - bundle install --no-deployment
-script: rake
+  - pip install -r requirements.txt --use-mirrors
+  # This is to make matplotlib play nicely:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+script:
+  - python baseline.py
 after_script:
-  - "travis-artifacts upload --path assets/unicorn.jpg:unicorn.jpg"
+  - "travis-artifacts upload --path assets/result.png:result.png"
