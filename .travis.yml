@@ -17,9 +17,10 @@ before_script:
   - pip install -r requirements.txt --use-mirrors
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && curl -u "$GITHUB_AUTH" -H "Content-Type: application/json" -d \'{"body": "#sciencing"}\' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments || false'
 script:
   - python baseline.py
 after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
-  - [ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || 0
-  - [ "${TRAVIS_PULL_REQUEST}" != "false" ] && curl -u "$GITHUB_AUTH" -H "Content-Type: application/json" -d '{"body":"test"}' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments || 0
+  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || false'
+  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && curl -u "$GITHUB_AUTH" -H "Content-Type: application/json" -d \'{"body":"#done"}\' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments || false'
