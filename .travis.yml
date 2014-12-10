@@ -23,3 +23,4 @@ after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
   - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || false'
   - 'sh after.sh'
+  - ENV
