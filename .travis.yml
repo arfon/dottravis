@@ -23,7 +23,7 @@ before_script:
   - ./miniconda.sh -b
   - export PATH=/home/travis/anaconda/bin:$PATH
   # Update conda itself
-  - conda update --yes cond
+  - conda update --yes conda
   - pip install -r requirements.txt --use-mirrors
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
