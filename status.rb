@@ -4,15 +4,15 @@ require 'yaml'
 @client = Octokit::Client.new(:access_token => ENV['GH_TOKEN'])
 
 puts("check")
-puts(ENV['TRAVIS_PULL_REQUEST'])
-puts("#{ENV['TRAVIS_PULL_REQUEST']}")
-puts("#{ENV['TRAVIS_PULL_REQUEST']}" != false)
-puts("#{ENV['TRAVIS_PULL_REQUEST']}" != 'false')
-puts("#{ENV['TRAVIS_PULL_REQUEST']}" != "false")
+#puts(ENV['TRAVIS_PULL_REQUEST'])
+#puts("#{ENV['TRAVIS_PULL_REQUEST']}")
+#puts("#{ENV['TRAVIS_PULL_REQUEST']}" != false)
+#puts("#{ENV['TRAVIS_PULL_REQUEST']}" != 'false')
+#puts("#{ENV['TRAVIS_PULL_REQUEST']}" != "false")#
 
-puts(ENV['TRAVIS_PULL_REQUEST'] != false)
-puts(ENV['TRAVIS_PULL_REQUEST'] != 'false')
-puts(ENV['TRAVIS_PULL_REQUEST'] != "false")
+#puts(ENV['TRAVIS_PULL_REQUEST'] != false)
+#puts(ENV['TRAVIS_PULL_REQUEST'] != 'false')
+#puts(ENV['TRAVIS_PULL_REQUEST'] != "false")
 
 #if ENV['TRAVIS_PULL_REQUEST'] != 'false'
 
