@@ -1,3 +1,5 @@
+require 'octokit'
+
 @client = Octokit::Client.new(:access_token => ENV['GH_TOKEN'])
 
 if pull_request_id = ENV['TRAVIS_PULL_REQUEST']
