@@ -5,9 +5,14 @@ require 'yaml'
 
 puts("check")
 puts(ENV['TRAVIS_PULL_REQUEST'])
+puts("#{ENV['TRAVIS_PULL_REQUEST']}")
+puts("#{ENV['TRAVIS_PULL_REQUEST']}" != false)
+puts("#{ENV['TRAVIS_PULL_REQUEST']}" != 'false')
+puts("#{ENV['TRAVIS_PULL_REQUEST']}" != "false")
+
+puts(ENV['TRAVIS_PULL_REQUEST'] != false)
 puts(ENV['TRAVIS_PULL_REQUEST'] != 'false')
 puts(ENV['TRAVIS_PULL_REQUEST'] != "false")
-puts(ENV['TRAVIS_PULL_REQUEST'] == false)
 
 #if ENV['TRAVIS_PULL_REQUEST'] != 'false'
 
