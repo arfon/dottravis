@@ -2,6 +2,7 @@
 
 """ Baseline example that needs to be beaten """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -20,4 +21,9 @@ ax.set_xlabel("x")
 ax.set_ylabel("y")
 fig.savefig("assets/result.png")
 
-print m_ls, b_ls
+print("Results of m, b: ({0:.4f} {1:.4f})".format(m_ls, b_ls))
+
+# Let's store result parameters in environment variables, and we will deal
+# with more complex values (e.g., uncertainties, etc) later
+os.environ["RESULT_M"] = "{0:.5f}".format(m_ls)
+os.environ["RESULT_B"] = "{0:.5f}".format(b_ls)
