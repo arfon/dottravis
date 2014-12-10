@@ -22,4 +22,5 @@ if pull_request_id = ENV['TRAVIS_PULL_REQUEST']
       scoreboard_path,
       "Created the scoreboard",
       scoreboard_contents)
+  end
 end
