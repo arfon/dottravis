@@ -1,1 +1,0 @@
-[ "${TRAVIS_PULL_REQUEST}" != "false" ] && curl -u "$GITHUB_AUTH" -H "Content-Type: application/json" -d '{"body":"#done"}' https://api.github.com/repos/arfon/dottravis/issues/$TRAVIS_PULL_REQUEST/comments || false
