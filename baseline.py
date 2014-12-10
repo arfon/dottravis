@@ -8,6 +8,12 @@ import matplotlib.pyplot as plt
 
 x, y, yerr = np.loadtxt("data/data.txt", unpack=True)
 
+
+m_true = -0.9594
+b_true = 4.294
+f_true = 0.534
+
+
 A = np.vstack((np.ones_like(x), x)).T
 C = np.diag(yerr * yerr)
 cov = np.linalg.inv(np.dot(A.T, np.linalg.solve(C, A)))
