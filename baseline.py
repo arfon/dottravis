@@ -27,3 +27,4 @@ print("Results of m, b: ({0:.4f} {1:.4f})".format(m_ls, b_ls))
 # with more complex values (e.g., uncertainties, etc) later
 os.environ["RESULT_M"] = "{0:.5f}".format(m_ls)
 os.environ["RESULT_B"] = "{0:.5f}".format(b_ls)
+os.environ["ENV_PASSED_FROM_PYTHON"] = "42"

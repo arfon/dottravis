@@ -3,6 +3,7 @@ require 'octokit'
 @client = Octokit::Client.new(:access_token => ENV['GH_TOKEN'])
 
 puts("check")
+puts(ENV['ENV_PASSED_FROM_PYTHON'])
 puts(ENV['TRAVIS_PULL_REQUEST'])
 puts(ENV['TRAVIS_PULL_REQUEST'] != "false")
 puts(ENV['TRAVIS_PULL_REQUEST'] == false)
@@ -35,7 +36,7 @@ if ENV['TRAVIS_PULL_REQUEST'] != "false"
     
     @client.create_contents(ENV['TRAVIS_REPO_SLUG'],
       scoreboard_path,
-      "Created the scoreboard",
+      "Created the scoreboard [ci skip]",
       scoreboard_contents)
 
   end
