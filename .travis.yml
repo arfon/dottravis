@@ -21,4 +21,4 @@ script:
   - python baseline.py
 after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
-  - ruby status.rb
+  - bundle exec ruby status.rb
