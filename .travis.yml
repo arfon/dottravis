@@ -21,4 +21,4 @@ script:
   - python baseline.py
 after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
-  - bundle exec ruby status.rb
+  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && bundle exec ruby status.rb || false'
