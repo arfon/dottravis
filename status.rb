@@ -11,16 +11,12 @@ if pull_request_id = ENV['TRAVIS_PULL_REQUEST']
   scoreboard_path = 'scoreboard.csv'
   all_paths = @client.contents(ENV['TRAVIS_REPO_SLUG'])
   if not all_paths.map(&:path).include? scoreboard_path
-
+    puts("create a scoreboard file..")
     ` OK, let's create a scoreboard file`
     parameters = ENV.grep(/^RESULT_/)
     scoreboard_contents = '# ' + parameters.join(', ') + '\n'
     scoreboard_contents += ENV['TRAVIS_BRANCH']
     scoreboard_contents += parameters.map { |x| ENV[x] }.join(',') + '\n'
-
-    @client.create_contents(ENV['TRAVIS_REPO_SLUG'],
-      scoreboard_path,
-      "Created the scoreboard",
-      scoreboard_contents)
+    puts(scoreboard_contents)
   end
 end
