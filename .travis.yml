@@ -1,3 +1,8 @@
+# Probably the worst way to do this, but let's define the competition model parameters here
+model_parameters:
+  - "m"
+  - "b"
+
 env:
  global:
    - "ARTIFACTS_AWS_REGION=us-east-1"
