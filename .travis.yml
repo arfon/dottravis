@@ -4,7 +4,7 @@ env:
    - "ARTIFACTS_S3_BUCKET=dottravis"
    - secure: "JXE+FZ30zzvZdROmYqzeuC+/5fTZZCU/5yOndxuuyunFmTEAHd9xvBPXiNSmQwR459o2+5cV0xwZjNEBRR2JvoOZ656WOQfWypM7OPGXt0q6xZfqjwnHRZ8MByy+ZnsGootVuvONpjBSaMAPcypDK1VLNzetssWwKDb9CQIqP8E="
    - secure: "WTGS+w2qkusP7K8HIyTI/2UJ29mhs5HsMGnJP4M55ImBDvNr4fzrwv4aecuAbbPAm+dHr/yyuQWKW6BOQhgf+y6waxwUwKNJ3DlGrdnTADqa7yjP1Fs95hGcCoSGaxqQlmiWtbHCfvYdXvXoe1sBdtC2Bjb0ZNHrv2xHsFxB60o="
-   - secure: "UgRb3f9caSovyLn0M1nO7vbd1xyW8+RddnkwadPrKDdGoUiLkK2VfWt29Up58tN/zM1Z2UFeK4JSGyQgHGvNnRFIaaZG+7YRvAo63JSia7NHF3vBQ8oZWg3S4nfCvh5thNYghHjdP4X3uKSw6gf4Q7VOirpffTKvUZrL8olny3I="
+   - secure: "IfIHLfMYc2k/B4wiekPMf3I8dw7HwiY/co4W6uViI/CQDudi/vDF5vQfjh5sH+jdIrU0TF+Fo+Ezu32o2CuYyf7Y1puyH4EGT6wwY7157YfkmhsxpsR3Ki81k9Juv95mkkBBi9P74+VikyuNjufia0TQ07nATqQrWny8J5CiInQ="
 
 language: python
 python:
