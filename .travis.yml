@@ -2,9 +2,9 @@ env:
  global:
    - "ARTIFACTS_AWS_REGION=us-east-1"
    - "ARTIFACTS_S3_BUCKET=dottravis"
-   - secure: "JXE+FZ30zzvZdROmYqzeuC+/5fTZZCU/5yOndxuuyunFmTEAHd9xvBPXiNSmQwR459o2+5cV0xwZjNEBRR2JvoOZ656WOQfWypM7OPGXt0q6xZfqjwnHRZ8MByy+ZnsGootVuvONpjBSaMAPcypDK1VLNzetssWwKDb9CQIqP8E="
-   - secure: "WTGS+w2qkusP7K8HIyTI/2UJ29mhs5HsMGnJP4M55ImBDvNr4fzrwv4aecuAbbPAm+dHr/yyuQWKW6BOQhgf+y6waxwUwKNJ3DlGrdnTADqa7yjP1Fs95hGcCoSGaxqQlmiWtbHCfvYdXvXoe1sBdtC2Bjb0ZNHrv2xHsFxB60o="
-   - secure: "IfIHLfMYc2k/B4wiekPMf3I8dw7HwiY/co4W6uViI/CQDudi/vDF5vQfjh5sH+jdIrU0TF+Fo+Ezu32o2CuYyf7Y1puyH4EGT6wwY7157YfkmhsxpsR3Ki81k9Juv95mkkBBi9P74+VikyuNjufia0TQ07nATqQrWny8J5CiInQ="
+   - secure: "Qpc4cZLxLVgOrRoe00/tYoJQXIGFnqAlNSjZgQc1K/BNT9vRd5oi/deYKSeU5/I0Y38QdRj79sO1OnWckPJPV/TcFJ+yhsJpx+oTs3E62SnMcXxEloxig6iFPMnIIyc4PRY4mlLz72uvJ12I4N8oAmnCNnyD+a6tbkwIKGo36ko="
+   - secure: "QuOS4Ot5jwGMe5SPW7IEnrPk1ke9uL6A40qC4nx90myjEYGgRJoPlGPZQVdsXACk2UyPHCKZ5W3h+FcIEuboxf29Zy/bVQLfjFDoFG3LxxPkF+xb6TK69VEWKp2kb//P7Hf+svaut8/a899W1PVR8+t/mq9OU4JkUYHtwD+67Bo="
+   - secure: "PpcGL3Lh7W6dnZ48zio/zaE7lsCAgfm1lL5vNZtZFiobKO1qfah3rT+X8KdLoMYHSpgmCrAMKr5sk2WOxd9sbCIi0IX5R/5lT8VEn/mHWWHhwZarVGwGh8P9wozt5rn7brk+75BW7pf7RfkJNwIttTAbGk1A2bL48XyFR/ATVrA="
 
 language: python
 python:
@@ -13,7 +13,7 @@ rvm:
   - "2.1.2"
 before_script:
   - bundle install
-  - sudo apt-get install libcfitsio3-dev python-matplotlib python-pyfits python-scipy
+  - sudo apt-get install python-matplotlib python-scipy
   - pip install -r requirements.txt --use-mirrors
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -21,5 +21,4 @@ script:
   - python baseline.py
 after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
-  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || false'
-  - 'sh after.sh'
+  - bundle exec ruby status.rb
