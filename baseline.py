@@ -1,8 +1,9 @@
 #/usr/bin/python
 
-""" Baseline example that needs to be beaten """
+""" Optimised example """
 
 import numpy as np
+import scipy.optimize as op
 import matplotlib.pyplot as plt
 
 x, y, yerr = np.loadtxt("data/data.txt", unpack=True)
@@ -11,6 +12,19 @@ A = np.vstack((np.ones_like(x), x)).T
 C = np.diag(yerr * yerr)
 cov = np.linalg.inv(np.dot(A.T, np.linalg.solve(C, A)))
 b_ls, m_ls = np.dot(cov, np.dot(A.T, np.linalg.solve(C, y)))
+
+def lnlike(theta, x, y, yerr):
+    m, b, lnf = theta
+    model = m * x + b
+    inv_sigma2 = 1.0/(yerr**2 + model**2*np.exp(2*lnf))
+    return -0.5*(np.sum((y-model)**2*inv_sigma2 - np.log(inv_sigma2)))
+
+
+nll = lambda *args: -lnlike(*args)
+result = op.minimize(nll, [m_true, b_true, np.log(f_true)], args=(x, y, yerr))
+m_ml, b_ml, lnf_ml = result["x"]
+
+m_ls, b_ls = m_ml, b_ml
 
 fig, ax = plt.subplots()
 ax.errorbar(x, y, yerr=yerr, c="k", fmt="o")
