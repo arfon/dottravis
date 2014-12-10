@@ -2,7 +2,6 @@
 
 """ Baseline example that needs to be beaten """
 
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 
