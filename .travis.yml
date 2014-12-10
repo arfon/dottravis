@@ -4,7 +4,7 @@ env:
    - "ARTIFACTS_S3_BUCKET=dottravis"
    - secure: "JXE+FZ30zzvZdROmYqzeuC+/5fTZZCU/5yOndxuuyunFmTEAHd9xvBPXiNSmQwR459o2+5cV0xwZjNEBRR2JvoOZ656WOQfWypM7OPGXt0q6xZfqjwnHRZ8MByy+ZnsGootVuvONpjBSaMAPcypDK1VLNzetssWwKDb9CQIqP8E="
    - secure: "WTGS+w2qkusP7K8HIyTI/2UJ29mhs5HsMGnJP4M55ImBDvNr4fzrwv4aecuAbbPAm+dHr/yyuQWKW6BOQhgf+y6waxwUwKNJ3DlGrdnTADqa7yjP1Fs95hGcCoSGaxqQlmiWtbHCfvYdXvXoe1sBdtC2Bjb0ZNHrv2xHsFxB60o="
-   - secure: "IfIHLfMYc2k/B4wiekPMf3I8dw7HwiY/co4W6uViI/CQDudi/vDF5vQfjh5sH+jdIrU0TF+Fo+Ezu32o2CuYyf7Y1puyH4EGT6wwY7157YfkmhsxpsR3Ki81k9Juv95mkkBBi9P74+VikyuNjufia0TQ07nATqQrWny8J5CiInQ="
+   - secure: "iPX311hb68s7KjYtAAb1g17rg7vvPma730x5coArFYc4kWQm824pkpPU90bEgCEiWu+njpvQfbfz3qzyPv0S7X3TTbnPeDS8j7c+eg/AMtTwIhtUogZtOQ8nedYelrKtfFZrgRaZepYEsJu/Zg4T75anDZDglqEG2IEeT9QYVyM="
 
 language: python
 python:
@@ -22,4 +22,4 @@ script:
 after_script:
   # Only upload to Travis and make a comment if there is a pull request associated with this build
   - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && travis-artifacts upload --path assets/result.png:result-$TRAVIS_PULL_REQUEST.png || false'
-  - 'sh after.sh'
+  - ruby comment.rb 
