@@ -3,11 +3,7 @@ require 'yaml'
 
 @client = Octokit::Client.new(:access_token => ENV['GH_TOKEN'])
 
-puts("check")
-puts(ENV['TRAVIS_PULL_REQUEST'])
-puts(ENV['TRAVIS_PULL_REQUEST'] != 'false')
-puts(ENV['TRAVIS_PULL_REQUEST'] != "false")
-puts(ENV['TRAVIS_PULL_REQUEST'] == false)
+puts("on master")
 
 if ENV['TRAVIS_PULL_REQUEST'] != 'false'
   `travis-artifacts upload --path assets/result.png:result.png --target-path results/#{ENV['TRAVIS_PULL_REQUEST']}/`
@@ -22,10 +18,9 @@ if ENV['TRAVIS_PULL_REQUEST'] != 'false'
 
   puts("have paths")
   if not all_paths.map(&:path).include? scoreboard_path and File.exist?(result_path)
-
-
+   
+    puts("No scoreboard exists")
     # OK, let's create a scoreboard file
-
     submitter = @client.issue(ENV['TRAVIS_REPO_SLUG'],
       ENV['TRAVIS_PULL_REQUEST']).user.login
     parameters = YAML.load(@client.contents(ENV['TRAVIS_REPO_SLUG'],
