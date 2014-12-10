@@ -19,7 +19,10 @@ if ENV['TRAVIS_PULL_REQUEST'] != "false"
   if not all_paths.map(&:path).include? scoreboard_path
 
     # OK, let's create a scoreboard file
-    parameters = ENV.grep(/^RESULT_/)
+    parameters = ENV.keys.grep(/^RESULT_/)
+    puts("params")
+    puts(parameters)
+    puts("..")
     scoreboard_contents = '# ' + parameters.join(', ') + '\n'
     scoreboard_contents += ENV['TRAVIS_BRANCH']
     scoreboard_contents += parameters.map { |x| ENV[x] }.join(',') + '\n'
