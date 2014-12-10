@@ -9,6 +9,7 @@ import scipy.optimize as op
 
 import emcee
 
+
 x, y, yerr = np.loadtxt("data/data.txt", unpack=True)
 
 A = np.vstack((np.ones_like(x), x)).T
