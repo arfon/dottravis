@@ -2,7 +2,7 @@ require 'octokit'
 
 @client = Octokit::Client.new(:access_token => ENV['GH_TOKEN'])
 
-if pull_request_id = ENV['TRAVIS_PULL_REQUEST']
+if ENV['TRAVIS_PULL_REQUEST'] != "false"
   `travis-artifacts upload --path assets/result.png:result.png --target-path results/#{ENV['TRAVIS_PULL_REQUEST']}/`
   image_url = "https://s3.amazonaws.com/#{ENV['ARTIFACTS_S3_BUCKET']}/results/#{ENV['TRAVIS_PULL_REQUEST']}/result.png"
   puts("adding comment")
